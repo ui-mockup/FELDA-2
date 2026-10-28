@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FELDA 70 Tahun | Bersama Peneroka</title>
+<meta name="description" content="Laman web rasmi Lembaga Kemajuan Tanah Persekutuan (FELDA). 70 Tahun Bersama Peneroka, 1956–2026.">
+<link rel="icon" href="assets/img/logo-felda-70.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* =========================================================
+   TOKEN WARNA & TIPOGRAFI — ubah di sini untuk seluruh laman
+   ========================================================= */
+:root{
+  --merah:#E1251B;
+  --merah-gelap:#B81B13;
+  --hitam:#111113;
+  --oren:#F07A1A;          /* ikon media sosial sahaja */
+  --putih:#FFFFFF;
+  --kelabu:#F5F5F6;
+  --kelabu-2:#EFEFF1;
+  --teks:#2B2B2F;
+  --teks-lembut:#6B6B73;
+  --garis:#E4E4E7;
+  --font-tajuk:'Poppins',sans-serif;
+  --font-badan:'Inter',sans-serif;
+  --radius:8px;
+  --lebar:1240px;
+  --ease:cubic-bezier(.65,.05,.36,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-badan);color:var(--teks);background:var(--putih);line-height:1.65;font-size:16px;overflow-x:hidden}
+h1,h2,h3,h4,h5{font-family:var(--font-tajuk);color:var(--hitam);line-height:1.2}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+button{font:inherit}
+:focus-visible{outline:3px solid var(--merah);outline-offset:3px}
+.bekas{max-width:var(--lebar);margin:0 auto;padding:0 24px}
+.label{display:inline-flex;align-items:center;gap:12px;font-family:var(--font-tajuk);font-weight:600;font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:var(--merah)}
+.label::before{content:"";width:28px;height:3px;background:var(--hitam);border-radius:2px}
+.tajuk-seksyen{font-size:clamp(28px,3.4vw,46px);font-weight:700;margin:10px 0 0;letter-spacing:-.01em}
+.tajuk-seksyen span{color:var(--merah)}
+.butang{display:inline-flex;align-items:center;justify-content:center;gap:12px;font-family:var(--font-tajuk);font-weight:600;font-size:15px;padding:17px 32px;border-radius:var(--radius);transition:.3s;border:0;cursor:pointer;white-space:nowrap}
+.butang-merah{background:var(--merah);color:#fff}
+.butang-merah:hover{background:var(--hitam)}
+.butang-hitam{background:var(--hitam);color:#fff}
+.butang-hitam:hover{background:#fff;color:var(--merah)}
+.butang svg{width:18px;height:18px;transition:transform .3s}
+.butang:hover svg{transform:translateX(4px)}
+.anak-panah{width:18px;height:18px}
+
+/* Animasi muncul semasa skrol */
+.muncul{opacity:0;transform:translateY(36px);transition:opacity .8s ease,transform .8s var(--ease)}
+.muncul.nampak{opacity:1;transform:none}
+.lewat-1{transition-delay:.1s}.lewat-2{transition-delay:.2s}.lewat-3{transition-delay:.3s}.lewat-4{transition-delay:.4s}
+
+/* ================= BAR ATAS ================= */
+.bar-atas{background:var(--kelabu);color:var(--teks-lembut);font-size:13.5px;border-bottom:1px solid var(--garis)}
+.bar-atas .bekas{display:flex;justify-content:space-between;align-items:center;height:44px;gap:16px}
+.bar-atas .kiri{display:flex;gap:26px;align-items:center;white-space:nowrap}
+.bar-atas .kiri svg{width:15px;height:15px;color:var(--merah);vertical-align:-2px;margin-right:7px}
+.bar-atas .kanan{display:flex;align-items:center;height:100%}
+.ikon-atas{display:flex;gap:6px;align-items:center;padding-right:14px;margin-right:14px;border-right:1px solid var(--garis);height:100%}
+.ikon-atas a{position:relative;width:34px;height:34px;display:grid;place-items:center;border-radius:50%;color:var(--hitam);transition:.25s}
+.ikon-atas a:hover{background:#fff;color:var(--merah)}
+.ikon-atas svg{width:19px;height:19px}
+.ikon-atas .faq-tag{position:absolute;top:1px;right:0;background:var(--merah);color:#fff;font-size:8px;font-weight:700;padding:1px 3px;border-radius:3px;line-height:1.2;font-family:var(--font-tajuk)}
+.akses{width:34px;height:34px;display:grid;place-items:center;border-radius:50%;color:var(--hitam);margin-right:14px;background:none;border:0;cursor:pointer}
+.akses svg{width:21px;height:21px}
+.akses:hover,.akses.is-active{background:var(--merah);color:#fff}
+
+/* Tema panel kebolehcapaian (assets/js/a11y.js) */
+:root{
+  --a11y-primary:#111113;   /* kepala panel + teks */
+  --a11y-primary-2:#B81B13; /* gradien kepala panel */
+  --a11y-accent:#E1251B;    /* garis, titik aktif, fokus */
+  --a11y-blue:#E1251B;      /* ikon + bingkai aktif */
+  --a11y-soft:#FDECEA;      /* latar jubin aktif */
+  --a11y-font:'Poppins',sans-serif;
+}
+.bahasa{display:flex;gap:4px}
+.bahasa a{padding:1px 9px;border-radius:3px;font-weight:500}
+.bahasa a.aktif{background:var(--merah);color:#fff}
+
+/* ================= KEPALA ================= */
+header.kepala{background:#fff;position:sticky;top:0;z-index:50;transition:box-shadow .3s}
+header.kepala.terapung{box-shadow:0 4px 24px rgba(0,0,0,.08)}
+.kepala .bekas{display:flex;align-items:center;justify-content:space-between;height:92px;gap:24px}
+.logo img{height:76px;width:auto}
+nav.menu>ul{display:flex;align-items:center;list-style:none;gap:24px}
+nav.menu>ul>li>a{display:inline-flex;align-items:center}
+nav.menu ul{list-style:none}
+nav.menu a{font-family:var(--font-tajuk);font-weight:500;font-size:16px;color:var(--hitam);position:relative;padding:33px 0;white-space:nowrap;transition:color .3s}
+nav.menu a::after{content:"";position:absolute;left:0;bottom:25px;height:2px;width:0;background:var(--merah);transition:width .35s var(--ease)}
+nav.menu a:hover{color:var(--merah)}
+nav.menu a:hover::after,nav.menu a.aktif::after{width:100%}
+nav.menu a.aktif{color:var(--merah)}
+
+/* ---- Mega menu (rujukan: ui-mockup FELDA-1) ---- */
+.kepala .bekas{position:relative}
+nav.menu .ada-sub{position:static}
+nav.menu .induk{display:inline-flex;align-items:center;gap:6px;background:none;border:0;cursor:pointer;font-family:var(--font-tajuk);font-weight:500;font-size:16px;color:var(--hitam);padding:33px 0;position:relative;white-space:nowrap;transition:color .3s}
+nav.menu .induk::after{content:"";position:absolute;left:0;bottom:25px;height:2px;width:0;background:var(--merah);transition:width .35s var(--ease)}
+nav.menu .chev{width:13px;height:13px;transition:transform .3s var(--ease)}
+nav.menu .mega-panel{position:absolute;left:24px;right:24px;top:calc(100% + 10px);background:#fff;border-radius:16px;box-shadow:0 24px 60px rgba(0,0,0,.16);border-top:4px solid var(--merah);display:grid;grid-template-columns:1.25fr 1fr 1fr 1fr;gap:40px;padding:36px 40px 38px;opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity .18s,transform .25s var(--ease),visibility 0s .18s;z-index:60}
+@media (min-width:1261px){
+  nav.menu .induk:hover,nav.menu .ada-sub:is(:hover,:has(:focus-visible))>.induk{color:var(--merah)}
+  nav.menu .ada-sub:is(:hover,:has(:focus-visible))>.induk::after{width:100%}
+  nav.menu .ada-sub:is(:hover,:has(:focus-visible)) .chev{transform:rotate(180deg)}
+  nav.menu .ada-sub:is(:hover,:has(:focus-visible))>.mega-panel{opacity:1;visibility:visible;transform:none;transition:opacity .25s,transform .35s var(--ease)}
+  nav.menu .ada-sub:is(:hover,:has(:focus-visible)) .mega-panel>div{opacity:1;transform:none}
+  nav.menu .ada-sub:is(:hover,:has(:focus-visible)) .mega-panel>div:nth-child(2){transition-delay:.05s}
+  nav.menu .ada-sub:is(:hover,:has(:focus-visible)) .mega-panel>div:nth-child(3){transition-delay:.1s}
+  nav.menu .ada-sub:is(:hover,:has(:focus-visible)) .mega-panel>div:nth-child(4){transition-delay:.15s}
+  nav.menu .ada-sub:is(:hover,:has(:focus-visible))>.mega-panel{z-index:61}
+}
+nav.menu .mega-panel::before{content:"";position:absolute;left:0;right:0;top:-24px;height:24px}
+nav.menu .mega-intro{border-right:1px solid var(--garis);padding-right:32px}
+nav.menu .mega-intro .ikon-m{width:52px;height:52px;border-radius:50%;background:#FDECEA;color:var(--merah);display:grid;place-items:center;margin-bottom:18px}
+nav.menu .mega-intro .ikon-m svg{width:24px;height:24px}
+nav.menu .mega-intro h4{font-size:22px;color:var(--merah);margin-bottom:8px}
+nav.menu .mega-intro p{font-size:14.5px;color:var(--teks-lembut);line-height:1.6;margin-bottom:18px}
+nav.menu .mega-intro .lanjut{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-tajuk);font-weight:600;font-size:14px;color:var(--hitam);padding:0}
+nav.menu .mega-intro .lanjut svg{width:16px;height:16px;transition:transform .3s}
+nav.menu .mega-intro .lanjut:hover{color:var(--merah)}
+nav.menu .mega-intro .lanjut:hover svg{transform:translateX(4px)}
+nav.menu .mega-panel h5{font-family:var(--font-tajuk);font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--merah);margin:6px 0 16px;padding-bottom:10px;border-bottom:1px solid var(--garis)}
+nav.menu .mega-panel ul{display:grid;gap:4px}
+nav.menu .mega-panel ul a,nav.menu .mega-panel ul span{display:flex;align-items:center;gap:0;padding:7px 0;font-family:var(--font-badan);font-size:15px;font-weight:500;color:var(--teks);white-space:normal}
+nav.menu .mega-panel ul span{color:var(--teks-lembut);font-weight:400}
+nav.menu .mega-panel ul a::before{content:"";flex:none;width:0;height:2px;margin-right:0;background:var(--merah);transition:width .3s var(--ease),margin .3s var(--ease)}
+nav.menu .mega-panel ul a:hover{color:var(--merah)}
+nav.menu .mega-panel ul a:hover::before{width:14px;margin-right:10px}
+nav.menu .mega-panel ul a::after{display:none}
+/* lajur muncul berperingkat */
+nav.menu .mega-panel>div{opacity:0;transform:translateY(10px);transition:.4s var(--ease)}
+.kepala-kanan{display:flex;align-items:center;gap:18px}
+.cari{width:44px;height:44px;border-radius:50%;background:var(--kelabu-2);display:grid;place-items:center;transition:.3s}
+.cari:hover{background:var(--merah);color:#fff}
+.cari svg{width:17px;height:17px}
+.togol{display:none;background:none;border:0;cursor:pointer;color:var(--hitam)}
+.togol svg{width:30px;height:30px}
+
+/* ================= HERO ================= */
+.hero{position:relative;min-height:650px;display:flex;align-items:flex-start;background:#E34F43 url("assets/img/hero-banner.jpg") right center/cover no-repeat;overflow:hidden}
+.hero .isi{position:relative;z-index:2;width:100%;padding-top:82px;padding-bottom:200px}
+.hero h1{color:#fff;font-size:clamp(42px,5.4vw,78px);font-weight:800;letter-spacing:-.015em;line-height:1.08;max-width:760px}
+.hero h1 em{font-style:normal;color:var(--hitam)}
+.hero p{max-width:540px;margin:28px 0 44px;color:#fff;font-size:17px;line-height:1.7;opacity:.95}
+.hero .butang{padding:20px 32px}
+/* animasi masuk hero */
+.hero .masuk{opacity:0;transform:translateY(30px);animation:naik .9s var(--ease) forwards}
+.hero .masuk:nth-child(2){animation-delay:.15s}
+.hero .masuk:nth-child(3){animation-delay:.3s}
+@keyframes naik{to{opacity:1;transform:none}}
+.hero{animation:zum 14s ease-out forwards;background-size:auto 100%}
+@keyframes zum{from{background-position:right 0 center}to{background-position:right -40px center}}
+
+/* ================= KHIDMAT PENEROKA ================= */
+.khidmat{position:relative;z-index:6;margin-top:-142px}
+.khidmat .grid{display:grid;grid-template-columns:repeat(4,1fr);background:#fff;box-shadow:0 24px 60px rgba(0,0,0,.10);border-radius:var(--radius);overflow:hidden}
+.kad-khidmat{padding:36px 30px 40px;border-right:1px solid var(--garis);position:relative;overflow:hidden}
+.kad-khidmat:last-child{border-right:0}
+.kad-khidmat::before{content:"";position:absolute;inset:auto 0 0 0;height:0;background:var(--merah);transition:height .45s var(--ease);z-index:0}
+.kad-khidmat:hover::before{height:100%}
+.kad-khidmat>*{position:relative;z-index:1}
+.kad-khidmat .ikon{width:60px;height:60px;border-radius:50%;background:var(--kelabu-2);color:var(--hitam);display:grid;place-items:center;margin-bottom:26px;transition:.35s}
+.kad-khidmat .ikon svg{width:24px;height:24px}
+.kad-khidmat h4{font-size:20px;font-weight:700;margin-bottom:10px;transition:.35s}
+.kad-khidmat p{font-size:14.5px;color:var(--teks-lembut);transition:.35s}
+.kad-khidmat .pautan{display:inline-flex;margin-top:22px;font-family:var(--font-tajuk);font-weight:600;font-size:14.5px;color:var(--merah);gap:8px;align-items:center;transition:.35s}
+.kad-khidmat:hover h4,.kad-khidmat:hover p,.kad-khidmat:hover .pautan{color:#fff}
+.kad-khidmat:hover .ikon{background:#fff;color:var(--merah);transform:rotate(-8deg) scale(1.05)}
+.kad-khidmat:hover .pautan svg{transform:translateX(4px)}
+.kad-khidmat .pautan svg{transition:transform .3s}
+
+/* ================= BERITA ================= */
+.seksyen{padding:110px 0}
+.berita{padding-top:70px}
+.kepala-seksyen{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;margin-bottom:56px}
+.berita .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.kad-berita{border-radius:var(--radius);overflow:hidden;background:#fff;border:1px solid var(--garis);transition:transform .4s var(--ease),box-shadow .4s}
+.kad-berita:hover{transform:translateY(-8px);box-shadow:0 24px 44px rgba(0,0,0,.09)}
+.kad-berita .foto{position:relative;height:230px}
+.kad-berita .foto .bingkai{position:absolute;inset:0;overflow:hidden}
+.kad-berita .foto img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+.kad-berita:hover .foto img{transform:scale(1.07)}
+.kad-berita .tarikh{position:absolute;left:22px;bottom:-24px;background:var(--merah);color:#fff;text-align:center;padding:10px 0 8px;width:58px;font-family:var(--font-tajuk);border-radius:3px;line-height:1.1;z-index:2}
+.kad-berita .tarikh b{font-size:24px;display:block;font-weight:700}
+.kad-berita .tarikh small{font-size:11.5px;text-transform:uppercase}
+.kad-berita .isi{padding:52px 26px 36px}
+.kad-berita .kat{color:var(--hitam);font-family:var(--font-tajuk);font-weight:500;font-size:13px;text-transform:uppercase;letter-spacing:.14em}
+.kad-berita h4{font-size:19.5px;font-weight:700;margin:14px 0 26px;transition:color .3s}
+.kad-berita:hover h4{color:var(--merah)}
+.kad-berita .baca{font-family:var(--font-tajuk);font-weight:500;font-size:14.5px;color:var(--merah);display:inline-flex;gap:22px;align-items:center}
+.kad-berita .baca svg{transition:transform .3s}
+.kad-berita:hover .baca svg{transform:translateX(5px)}
+
+/* ================= PROGRAM (akordion) ================= */
+.program{background:var(--kelabu);padding:64px 0 46px}
+.program .kepala-seksyen{margin-bottom:46px}
+.program .kepala-seksyen p{max-width:410px;color:var(--teks-lembut);font-size:15.5px;margin-bottom:10px}
+.akordion{display:flex;gap:16px;height:524px}
+.projek{flex:1;position:relative;border-radius:var(--radius);overflow:hidden;transition:flex .75s var(--ease);cursor:pointer;min-width:0;background:var(--hitam);color:#fff;outline:none}
+.projek.aktif{flex:3.2}
+.projek .foto{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease)}
+.projek:hover .foto{transform:scale(1.06)}
+/* Foto sentiasa nampak; kad tertutup sedikit gelap supaya teks tegak jelas */
+.projek::before{content:"";position:absolute;inset:0;z-index:1;background:rgba(10,10,12,.28);transition:opacity .6s}
+.projek.aktif::before{opacity:0}
+.projek::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(0deg,rgba(10,10,12,.9) 0%,rgba(10,10,12,.45) 35%,rgba(10,10,12,0) 65%)}
+.projek .nom{position:absolute;top:30px;left:28px;z-index:2;font-family:var(--font-tajuk);font-weight:700;font-size:15px;color:#fff;transition:font-size .5s var(--ease),top .5s var(--ease)}
+.projek.aktif .nom{font-size:44px;font-weight:800;top:36px}
+.projek .tegak{position:absolute;left:50%;bottom:34px;transform:translateX(-50%) rotate(180deg);writing-mode:vertical-rl;z-index:2;font-family:var(--font-tajuk);font-weight:600;font-size:18px;white-space:nowrap;transition:opacity .35s;display:flex;align-items:center;gap:14px}
+.projek .tegak small{color:rgba(255,255,255,.75);font-size:12.5px;letter-spacing:.24em;text-transform:uppercase;font-weight:500}
+.projek.aktif .tegak{opacity:0;pointer-events:none}
+.projek .butiran{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:40px 40px 38px;display:flex;justify-content:space-between;align-items:flex-end;gap:20px;opacity:0;transform:translateY(30px);transition:opacity .45s,transform .55s var(--ease);pointer-events:none}
+.projek.aktif .butiran{opacity:1;transform:none;transition-delay:.25s;pointer-events:auto}
+.projek .butiran .kat{display:inline-block;background:var(--merah);padding:6px 14px;border-radius:3px;font-family:var(--font-tajuk);font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;margin-bottom:12px}
+.projek .butiran h3{color:#fff;font-size:30px;font-weight:700;margin-bottom:12px;max-width:360px}
+.projek .butiran p{color:#e2e2e6;max-width:340px;font-size:14.5px}
+.projek .bulat{flex:none;width:68px;height:68px;border-radius:50%;background:rgba(17,17,19,.85);display:grid;place-items:center;transition:.35s}
+.projek .bulat:hover{background:var(--merah);transform:rotate(-45deg)}
+.projek .bulat svg{width:22px;height:22px}
+
+/* ================= FELDA DIGITAL ================= */
+.digital{padding:80px 0 60px}
+.digital .tengah{text-align:center;margin-bottom:56px}
+.digital .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.kad-digital{display:flex;flex-direction:column;padding:40px 34px 46px;border:1.5px solid var(--hitam);border-top-width:5px;border-radius:10px;background:#fff;transition:transform .4s var(--ease),box-shadow .4s,border-color .4s}
+.kad-digital:hover{transform:translateY(-8px);box-shadow:0 22px 40px rgba(0,0,0,.08);border-color:var(--merah)}
+.kad-digital .logo-d{height:60px;display:flex;align-items:center;margin-bottom:22px}
+.kad-digital .logo-d img{max-height:58px;width:auto}
+.kad-digital .logo-d.panjang img{max-height:none;width:100%;max-width:300px}
+.kad-digital .sps{font-family:var(--font-tajuk);font-weight:800;font-size:34px;letter-spacing:.02em;color:var(--hitam);line-height:1}
+.kad-digital .sps i{font-style:normal;color:var(--merah)}
+.kad-digital h4{font-size:21px;font-weight:700;margin-bottom:10px}
+.kad-digital p{color:var(--teks-lembut);font-size:15px;margin-bottom:26px}
+.kad-digital a{margin-top:auto;font-family:var(--font-tajuk);font-weight:600;font-size:14.5px;color:var(--merah);display:inline-flex;gap:12px;align-items:center}
+.kad-digital a svg{transition:transform .3s}
+.kad-digital:hover a svg{transform:translateX(5px)}
+
+/* ================= MEDIA SOSIAL ================= */
+.sosial{padding:20px 0 0}
+.sosial .kepala-sosial{display:flex;justify-content:center;align-items:center;gap:40px;margin-bottom:22px;flex-wrap:wrap}
+.sosial .tajuk-seksyen{margin:0}
+.ikon-sosial{display:flex;gap:8px}
+.ikon-sosial a{width:42px;height:42px;border-radius:50%;background:var(--oren);color:#fff;display:grid;place-items:center;transition:.3s;font-family:var(--font-tajuk);font-weight:600;font-size:11px;letter-spacing:.05em}
+.ikon-sosial a:hover{background:var(--merah);transform:translateY(-3px)}
+.ikon-sosial a.semua{background:#DCDCDF;color:var(--hitam)}
+.ikon-sosial a.semua:hover{background:var(--hitam);color:#fff}
+.ikon-sosial svg{width:18px;height:18px}
+.galeri{display:grid;grid-template-columns:repeat(5,1fr);max-width:1192px;margin:0 auto}
+.galeri a{position:relative;aspect-ratio:355/469;overflow:hidden;display:block}
+.galeri img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+.galeri a::after{content:"";position:absolute;inset:0;background:rgba(225,37,27,.55);opacity:0;transition:.4s}
+.galeri a .lihat{position:absolute;left:50%;top:50%;transform:translate(-50%,-30%);z-index:2;width:54px;height:54px;border-radius:50%;background:#fff;color:var(--merah);display:grid;place-items:center;opacity:0;transition:.4s var(--ease)}
+.galeri a .lihat svg{width:22px;height:22px}
+.galeri a:hover img{transform:scale(1.08)}
+.galeri a:hover::after{opacity:1}
+.galeri a:hover .lihat{opacity:1;transform:translate(-50%,-50%)}
+
+/* ================= ANAK SYARIKAT ================= */
+.anak{padding:32px 0 24px;border-top:1px solid var(--garis);margin-top:28px}
+.anak .tengah{text-align:center;margin-bottom:22px}
+.anak .baris{display:flex;justify-content:space-between;align-items:center;gap:20px}
+.anak .baris a{display:flex;align-items:center;justify-content:center;flex:0 1 auto;transition:transform .35s var(--ease),filter .35s;filter:grayscale(.15)}
+.anak .baris a:hover{transform:translateY(-4px);filter:none}
+.anak .baris img{height:68px;width:auto;mix-blend-mode:multiply}
+
+/* ================= CTA ================= */
+.cta{position:relative;padding:70px 0 54px;overflow:hidden;background:#fff}
+.cta::before{content:"";position:absolute;top:0;bottom:0;right:0;left:36%;background:url("assets/img/berita-2.jpg") center 40%/cover no-repeat;opacity:.55}
+.cta::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#fff 0%,#fff 38%,rgba(255,255,255,.55) 62%,rgba(255,255,255,.25) 100%)}
+.cta .bekas{display:flex;justify-content:space-between;align-items:center;gap:30px;position:relative;z-index:1}
+.cta h2{font-size:clamp(28px,3.1vw,44px);font-weight:700;max-width:600px;line-height:1.2}
+.cta h2 span{color:var(--merah)}
+.cta .masa{color:var(--teks-lembut);margin-top:22px;font-size:16px}
+
+/* ================= KAKI ================= */
+footer{background:var(--merah);color:#fff;padding:40px 0 0;font-size:15.5px}
+footer .grid{display:grid;grid-template-columns:1.25fr 1fr 1fr 1.1fr;gap:56px;padding-bottom:40px}
+footer h5{color:#fff;font-size:19px;font-weight:600;margin-bottom:26px;position:relative;padding-bottom:14px}
+footer h5::after{content:"";position:absolute;left:0;bottom:0;width:36px;height:3px;background:#fff}
+footer .nama-org{font-family:var(--font-tajuk);font-weight:600;font-size:18px;line-height:1.5;margin-bottom:8px;padding-left:6px}
+footer p{opacity:.92;line-height:1.6}
+footer ul{list-style:none}
+footer li{margin-bottom:12px}
+footer li a{opacity:.92;transition:.25s;display:inline-block}
+footer li a:hover{opacity:1;transform:translateX(4px)}
+footer .hubung li{display:flex;gap:12px;line-height:1.55;margin-bottom:16px}
+footer .hubung svg{flex:none;width:18px;height:18px;margin-top:3px}
+footer .sosial-kaki{display:flex;gap:10px;margin-top:38px}
+footer .sosial-kaki a{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.18);display:grid;place-items:center;transition:.3s}
+footer .sosial-kaki a:hover{background:#fff;color:var(--merah)}
+footer .sosial-kaki svg{width:15px;height:15px}
+.bawah{background:var(--merah-gelap);padding:22px 0;font-size:14px}
+.bawah .bekas{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.bawah nav{display:flex;gap:18px;flex-wrap:wrap}
+.bawah a:hover{text-decoration:underline}
+
+/* ================= RESPONSIF ================= */
+@media (max-width:1260px){
+  nav.menu{display:none}
+  .togol{display:block}
+  nav.menu.buka{display:block;position:absolute;top:92px;left:0;right:0;background:#fff;box-shadow:0 14px 30px rgba(0,0,0,.1)}
+  nav.menu.buka{max-height:calc(100vh - 92px);overflow-y:auto}
+  nav.menu.buka>ul{flex-direction:column;align-items:stretch;gap:0;padding:8px 24px 16px}
+  nav.menu.buka>ul>li>a,nav.menu.buka .induk{display:flex;width:100%;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--garis)}
+  nav.menu.buka a::after,nav.menu.buka .induk::after{display:none}
+  nav.menu.buka .mega-panel{position:static;display:none;opacity:1;visibility:visible;transform:none;box-shadow:none;border:0;border-left:3px solid var(--merah);border-radius:0;padding:6px 0 10px 16px;margin:0 0 6px;gap:14px;transition:none}
+  nav.menu.buka .mega-panel::before{display:none}
+  nav.menu.buka .mega-panel>div{opacity:1;transform:none}
+  nav.menu.buka .mega-intro{display:none}
+  nav.menu.buka .ada-sub.buka>.mega-panel{display:grid;grid-template-columns:1fr}
+  nav.menu.buka .ada-sub.buka>.induk{color:var(--merah)}
+  nav.menu.buka .ada-sub.buka .chev{transform:rotate(180deg)}
+  nav.menu.buka .mega-panel h5{margin:8px 0 6px;padding-bottom:6px}
+  nav.menu.buka .mega-panel ul a,nav.menu.buka .mega-panel ul span{padding:8px 0}
+  .khidmat .grid{grid-template-columns:repeat(2,1fr)}
+  .kad-khidmat:nth-child(2){border-right:0}
+  .kad-khidmat:nth-child(-n+2){border-bottom:1px solid var(--garis)}
+  .berita .grid,.digital .grid{grid-template-columns:1fr 1fr}
+  .anak .baris{flex-wrap:wrap;justify-content:center;gap:24px 36px}
+  footer .grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:760px){
+  .bar-atas .kiri span:nth-child(2){display:none}
+  .ikon-atas a:nth-child(n+3){display:none}
+  .kepala .bekas{height:74px}
+  .logo img{height:60px}
+  nav.menu.buka{top:74px;max-height:calc(100vh - 74px)}
+  .hero{min-height:600px;background-position:72% center;background-size:cover;animation:none}
+  .hero::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(225,60,45,.55) 0%,rgba(225,60,45,.25) 60%,rgba(255,255,255,0) 100%);z-index:1}
+  .hero .isi{padding-top:56px;padding-bottom:170px}
+  .hero p{font-size:16px}
+  .khidmat{margin-top:-120px}
+  .khidmat .grid,.berita .grid,.digital .grid,footer .grid{grid-template-columns:1fr}
+  .kad-khidmat{border-right:0!important;border-bottom:1px solid var(--garis);padding:28px 24px}
+  .kad-khidmat:last-child{border-bottom:0}
+  .kepala-seksyen{flex-direction:column;align-items:flex-start;margin-bottom:36px}
+  .seksyen{padding:70px 0}
+  .berita{padding-top:60px}
+  .akordion{flex-direction:column;height:auto;gap:10px}
+  .projek{height:92px;flex:none!important;transition:height .7s var(--ease)}
+  .projek.aktif{height:440px}
+  .projek:not(.aktif)::after{background:linear-gradient(90deg,rgba(10,10,12,.85) 0%,rgba(10,10,12,.35) 100%)}
+  .projek .tegak{writing-mode:horizontal-tb;transform:translateY(-50%);left:72px;top:50%;bottom:auto}
+  .projek .nom{top:50%;transform:translateY(-50%);left:24px}
+  .projek.aktif .nom{top:28px;transform:none}
+  .projek .butiran{padding:24px;flex-direction:column;align-items:flex-start}
+  .projek .tegak{gap:10px;font-size:16px}
+  .projek .tegak small{letter-spacing:.12em;font-size:11px}
+  .projek .butiran h3{font-size:24px}
+  .galeri{grid-template-columns:repeat(2,1fr)}
+  .galeri a:nth-child(5){display:none}
+  .sosial .kepala-sosial{gap:16px}
+  .cta::before{left:0;opacity:.25}
+  .cta::after{background:linear-gradient(180deg,rgba(255,255,255,.9),rgba(255,255,255,.8))}
+  .cta .bekas{flex-direction:column;align-items:flex-start}
+  footer .grid{gap:34px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .muncul,.hero .masuk{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<div id="a11y-root">
+
+<!-- Simbol ikon (digunakan semula) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-panah" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-telefon" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></symbol>
+  <symbol id="i-lokasi" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+  <symbol id="i-cari" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M20 20l-4-4"/></symbol>
+  <symbol id="i-faq" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M4 19.5V6.5A2.5 2.5 0 0 1 6.5 4h7M20 11v4.5a2.5 2.5 0 0 1-2.5 2.5H8l-4 3.5"/><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M10 9.3a2 2 0 1 1 2.8 1.8c-.5.3-.8.7-.8 1.2M12 15h.01"/></symbol>
+  <symbol id="i-mesej" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M4 4h16v12H8l-4 4z"/><path stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M8 9h8M8 12.5h5"/></symbol>
+  <symbol id="i-peta" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8"><rect x="9" y="3" width="6" height="5" rx="1"/><rect x="2.5" y="16" width="6" height="5" rx="1"/><rect x="9" y="16" width="6" height="5" rx="1"/><rect x="15.5" y="16" width="6" height="5" rx="1"/><path d="M12 8v4M5.5 16v-4h13v4M12 12v4"/></g></symbol>
+  <symbol id="i-akses" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="7" r="1.4" fill="currentColor"/><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M7.5 10l4.5 1 4.5-1M12 11v3.5l-2.5 4M12 14.5l2.5 4"/></symbol>
+  <symbol id="i-fb" viewBox="0 0 24 24"><path fill="currentColor" d="M14 8h3V4h-3c-2.8 0-4 1.8-4 4.3V10H7v4h3v8h4v-8h3l1-4h-4V8.5c0-.3.2-.5.5-.5z"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path fill="currentColor" d="M17.8 3h3.1l-6.8 7.7L22 21h-6.2l-4.9-6.4L5.3 21H2.2l7.3-8.3L2 3h6.3l4.4 5.9zm-1.1 16.2h1.7L7.4 4.7H5.6z"/></symbol>
+  <symbol id="i-ig" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></symbol>
+  <symbol id="i-yt" viewBox="0 0 24 24"><path fill="currentColor" d="M22 8.2a3 3 0 0 0-2-2.1C18.2 5.6 12 5.6 12 5.6s-6.2 0-8 .5a3 3 0 0 0-2 2.1A31 31 0 0 0 1.6 12 31 31 0 0 0 2 15.8a3 3 0 0 0 2 2.1c1.8.5 8 .5 8 .5s6.2 0 8-.5a3 3 0 0 0 2-2.1 31 31 0 0 0 .4-3.8 31 31 0 0 0-.4-3.8zM10 15V9l5.2 3z"/></symbol>
+  <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.3 0 .5l-.4.6c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.1 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.7-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></symbol>
+</svg>
+
+<!-- ================= BAR ATAS ================= -->
+<div class="bar-atas">
+  <div class="bekas">
+    <div class="kiri">
+      <span><svg><use href="#i-telefon"/></svg>03-2191 2191</span>
+      <span><svg><use href="#i-lokasi"/></svg>Menara FELDA, Platinum Park, Kuala Lumpur</span>
+    </div>
+    <div class="kanan">
+      <div class="ikon-atas">
+        <a href="#" aria-label="Soalan Lazim"><svg><use href="#i-faq"/></svg><span class="faq-tag">FAQ</span></a>
+        <a href="tel:0321912191" aria-label="Telefon"><svg><use href="#i-telefon"/></svg></a>
+        <a href="#" aria-label="Aduan &amp; Maklum Balas"><svg><use href="#i-mesej"/></svg></a>
+        <a href="#" aria-label="Peta Laman"><svg><use href="#i-peta"/></svg></a>
+      </div>
+      <button type="button" class="akses" data-a11y-open aria-label="Alat Kebolehcapaian"><svg><use href="#i-akses"/></svg></button>
+      <span class="bahasa"><a href="#" class="aktif" data-lang="ms">BM</a><a href="#" data-lang="en">EN</a></span>
+    </div>
+  </div>
+</div>
+
+<!-- ================= KEPALA ================= -->
+<header class="kepala" id="kepala">
+  <div class="bekas">
+    <a href="#" class="logo"><img src="assets/img/logo-felda-70.png" alt="FELDA 70 Tahun"></a>
+    <nav class="menu" id="menu" aria-label="Menu utama">
+      <ul>
+        <li><a href="#" class="aktif">Utama</a></li>
+        <li class="ada-sub"><button type="button" class="induk" aria-expanded="false">Mengenai FELDA<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/></svg></button>
+          <div class="mega-panel">
+            <div class="mega-intro"><div class="ikon-m"><svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5h.01"/></g></svg></div><h4>Mengenai FELDA</h4><p>Ditubuhkan pada 1 Julai 1956 di bawah Ordinan Kemajuan Tanah 1956.</p><a href="#" class="lanjut">Ketahui lanjut <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+            <div><h5>FELDA</h5><ul><li><a href="#">Profil FELDA</a></li><li><a href="#">Korporat</a></li><li><a href="#">Aset FELDA</a></li><li><a href="#">Statistik Pelawat</a></li></ul></div>
+            <div><h5>Integriti</h5><ul><li><a href="#">Buku Integriti</a></li><li><a href="#">Peringatan Integriti</a></li><li><a href="#">Suara Integriti</a></li></ul></div>
+            <div><h5>Perolehan</h5><ul><li><a href="#">Iklan</a></li><li><a href="#">Tender</a></li><li><a href="#">Log Masuk Petugas</a></li></ul></div>
+          </div></li>
+        <li class="ada-sub"><button type="button" class="induk" aria-expanded="false">Peneroka<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/></svg></button>
+          <div class="mega-panel">
+            <div class="mega-intro"><div class="ikon-m"><svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM22 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></g></svg></div><h4>Untuk Peneroka</h4><p>Semua urusan peneroka dan keluarga FELDA di satu tempat.</p><a href="#" class="lanjut">Ketahui lanjut <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+            <div><h5>Akaun</h5><ul><li><a href="#">Perakaunan Peneroka</a></li><li><a href="#">Bayaran Digital (SPS)</a></li><li><a href="#">myagreement</a></li></ul></div>
+            <div><h5>Rancangan</h5><ul><li><a href="#">Lokasi Rancangan</a></li><li><a href="#">Sumbangan Sosioekonomi</a></li></ul></div>
+            <div><h5>Digital</h5><ul><li><a href="#">RISE</a></li></ul></div>
+          </div></li>
+        <li class="ada-sub"><button type="button" class="induk" aria-expanded="false">Perkhidmatan<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/></svg></button>
+          <div class="mega-panel">
+            <div class="mega-intro"><div class="ikon-m"><svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></g></svg></div><h4>Perkhidmatan</h4><p>Permohonan dan perkhidmatan dalam talian FELDA.</p><a href="#" class="lanjut">Ketahui lanjut <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+            <div><h5>Permohonan</h5><ul><li><a href="#">Permohonan Online</a></li><li><a href="#">Senarai Perkhidmatan</a></li></ul></div>
+            <div><h5>Sosial</h5><ul><li><a href="#">Sumbangan Khidmat Sosial</a></li><li><a href="#">Waqaf FELDA</a></li></ul></div>
+            <div><h5>Bantuan</h5><ul><li><a href="#">Aduan &amp; Maklum Balas</a></li><li><a href="#">Soalan Lazim</a></li></ul></div>
+          </div></li>
+        <li class="ada-sub"><button type="button" class="induk" aria-expanded="false">Program<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/></svg></button>
+          <div class="mega-panel">
+            <div class="mega-intro"><div class="ikon-m"><svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V12M12 12c0-4 3-7 8-8-1 5-4 8-8 8zM12 15c0-3-2.5-5.5-7-6 .5 4 3 6 7 6z"/></g></svg></div><h4>Program &amp; Inisiatif</h4><p>Program utama yang memperkasa peneroka dan komuniti FELDA.</p><a href="#" class="lanjut">Ketahui lanjut <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+            <div><h5>Ladang</h5><ul><li><a href="#">Program Tanam Semula</a></li><li><a href="#">RISE: Ladang Pintar</a></li></ul></div>
+            <div><h5>Insan</h5><ul><li><a href="#">Generasi Baharu FELDA</a></li><li><a href="#">Usahawan Komuniti</a></li></ul></div>
+            <div><h5>Komuniti</h5><ul><li><a href="#">Kesejahteraan Komuniti</a></li></ul></div>
+          </div></li>
+        <li class="ada-sub"><button type="button" class="induk" aria-expanded="false">Media<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/></svg></button>
+          <div class="mega-panel">
+            <div class="mega-intro"><div class="ikon-m"><svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 9h10M7 13h6"/><circle cx="16.5" cy="15.5" r="1.5"/></g></svg></div><h4>Pusat Media</h4><p>Berita, hebahan dan galeri aktiviti FELDA.</p><a href="#" class="lanjut">Ketahui lanjut <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+            <div><h5>Berita</h5><ul><li><a href="#">Pengumuman &amp; Program</a></li><li><a href="#">Hebahan Media</a></li><li><a href="#">Keratan Akhbar</a></li></ul></div>
+            <div><h5>Penerbitan</h5><ul><li><a href="#">Booklet</a></li></ul></div>
+            <div><h5>Multimedia</h5><ul><li><a href="#">Paparan Galeri</a></li><li><a href="#">Video</a></li></ul></div>
+          </div></li>
+        <li class="ada-sub"><button type="button" class="induk" aria-expanded="false">Hubungi<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/></svg></button>
+          <div class="mega-panel">
+            <div class="mega-intro"><div class="ikon-m"><svg viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></g></svg></div><h4>Hubungi Kami</h4><p>Menara FELDA, Platinum Park, No. 11, Persiaran KLCC, 50088 Kuala Lumpur.</p><a href="#" class="lanjut">Ketahui lanjut <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+            <div><h5>Talian</h5><ul><li><a href="#">03-2191 2191</a></li><li><a href="#">WhatsApp 012-259 4214</a></li></ul></div>
+            <div><h5>Waktu Pejabat</h5><ul><li><span>Isnin – Jumaat</span></li><li><span>8:30 pagi – 5:30 petang</span></li></ul></div>
+            <div><h5>Lain-lain</h5><ul><li><a href="#">Pejabat Rancangan</a></li><li><a href="#">Aduan</a></li></ul></div>
+          </div></li>
+      </ul>
+    </nav>
+    <div class="kepala-kanan">
+      <a href="#" class="cari" aria-label="Carian"><svg><use href="#i-cari"/></svg></a>
+      <button class="togol" aria-label="Buka menu" aria-controls="menu" aria-expanded="false" id="togol">
+        <svg viewBox="0 0 24 24"><path stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="hero" data-a11y-bg>
+  <div class="bekas isi">
+    <h1 class="masuk">70 Tahun <em>Bersama</em><br>Peneroka</h1>
+    <p class="masuk">Dari hutan belantara kepada komuniti yang maju — tujuh dekad FELDA membina tanah, membina insan dan membina masa depan generasi peneroka.</p>
+    <div class="masuk"><a href="#" class="butang butang-hitam">Kisah Kami <svg><use href="#i-panah"/></svg></a></div>
+  </div>
+</section>
+
+<!-- ================= KHIDMAT PENEROKA ================= -->
+<section class="khidmat" id="khidmat">
+  <div class="bekas">
+    <div class="grid muncul">
+      <a href="#" class="kad-khidmat">
+        <div class="ikon"><svg viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M5 4h14v16H5zM9 9h6M9 12.5h6M9 16h4"/></svg></div>
+        <h4>Perakaunan Peneroka</h4>
+        <p>Semak penyata pendapatan, potongan dan baki akaun anda.</p>
+        <span class="pautan">Semak <svg class="anak-panah"><use href="#i-panah"/></svg></span>
+      </a>
+      <a href="#" class="kad-khidmat">
+        <div class="ikon"><svg viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM22 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></svg></div>
+        <h4>Perkhidmatan</h4>
+        <p>Bantuan pendidikan, khairat kematian dan tabung kebajikan.</p>
+        <span class="pautan">Ketahui <svg class="anak-panah"><use href="#i-panah"/></svg></span>
+      </a>
+      <a href="#" class="kad-khidmat">
+        <div class="ikon"><svg viewBox="0 0 24 24"><use href="#i-lokasi"/></svg></div>
+        <h4>Lokasi Rancangan</h4>
+        <p>Cari rancangan dan pejabat wilayah FELDA berhampiran anda.</p>
+        <span class="pautan">Cari <svg class="anak-panah"><use href="#i-panah"/></svg></span>
+      </a>
+      <a href="#" class="kad-khidmat">
+        <div class="ikon"><svg viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21.2l8.8-8.8a5.5 5.5 0 0 0 0-7.8z"/></svg></div>
+        <h4>Sumbangan Sosioekonomi</h4>
+        <p>Komuniti, pendidikan, usahawan dan pewarisan.</p>
+        <span class="pautan">Mohon <svg class="anak-panah"><use href="#i-panah"/></svg></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= BERITA ================= -->
+<section class="seksyen berita" id="berita">
+  <div class="bekas">
+    <div class="kepala-seksyen muncul">
+      <div>
+        <span class="label">Media</span>
+        <h2 class="tajuk-seksyen">Berita &amp; <span>Hebahan Terkini</span></h2>
+      </div>
+      <a href="#" class="butang butang-merah">Semua Berita <svg><use href="#i-panah"/></svg></a>
+    </div>
+    <div class="grid">
+      <article class="kad-berita muncul lewat-1">
+        <div class="foto"><div class="bingkai"><img src="assets/img/berita-1.jpg" alt="Majlis berbuka puasa bersama warga FELDA Pahang" loading="lazy"></div><div class="tarikh"><b>19</b><small>Jul</small></div></div>
+        <div class="isi">
+          <span class="kat">Hebahan 2026</span>
+          <h4>Harmoni Ramadan: Jalinan Ukhuwah MB Pahang dan Warga FELDA Terus Utuh</h4>
+          <a href="#" class="baca">Baca Selanjutnya <svg class="anak-panah"><use href="#i-panah"/></svg></a>
+        </div>
+      </article>
+      <article class="kad-berita muncul lewat-2">
+        <div class="foto"><div class="bingkai"><img src="assets/img/berita-2.jpg" alt="Peneroka bekerja di ladang sawit" loading="lazy"></div><div class="tarikh"><b>01</b><small>Jul</small></div></div>
+        <div class="isi">
+          <span class="kat">70 Tahun</span>
+          <h4>Sambutan 70 Tahun FELDA: Meraikan Jasa Peneroka Seluruh Negara</h4>
+          <a href="#" class="baca">Baca Selanjutnya <svg class="anak-panah"><use href="#i-panah"/></svg></a>
+        </div>
+      </article>
+      <article class="kad-berita muncul lewat-3">
+        <div class="foto"><div class="bingkai"><img src="assets/img/berita-3.jpg" alt="Peranti digital pengurusan ladang" loading="lazy"></div><div class="tarikh"><b>05</b><small>Mei</small></div></div>
+        <div class="isi">
+          <span class="kat">Digital</span>
+          <h4>Pengenalan RISE: Platform Digital Bersepadu untuk Peneroka</h4>
+          <a href="#" class="baca">Baca Selanjutnya <svg class="anak-panah"><use href="#i-panah"/></svg></a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROGRAM & INISIATIF (akordion) ================= -->
+<section class="program" id="program">
+  <div class="bekas">
+    <div class="kepala-seksyen muncul">
+      <div>
+        <span class="label">Program &amp; Inisiatif</span>
+        <h2 class="tajuk-seksyen">Untuk Peneroka, <span>Oleh FELDA</span></h2>
+      </div>
+      <p>Halakan kursor atau ketik pada setiap kad untuk melihat program utama yang memperkasa peneroka dan komuniti FELDA.</p>
+    </div>
+
+    <div class="akordion muncul" id="akordion">
+      <article class="projek aktif" tabindex="0">
+        <img class="foto" src="assets/img/program-ladang.jpg" alt="" loading="lazy">
+        <span class="nom">01</span>
+        <div class="tegak"><small>Ladang</small>Tanam Semula</div>
+        <div class="butiran">
+          <div>
+            <span class="kat">Ladang</span>
+            <h3>Program Tanam Semula</h3>
+            <p>Meningkatkan hasil ladang peneroka melalui benih berkualiti dan amalan agronomi terbaik.</p>
+          </div>
+          <a href="#" class="bulat" aria-label="Lihat Program Tanam Semula"><svg><use href="#i-panah"/></svg></a>
+        </div>
+      </article>
+
+      <article class="projek" tabindex="0">
+        <img class="foto" src="assets/img/program-generasi.jpg" alt="" loading="lazy">
+        <span class="nom">02</span>
+        <div class="tegak"><small>Pendidikan</small>Generasi Baharu</div>
+        <div class="butiran">
+          <div>
+            <span class="kat">Pendidikan</span>
+            <h3>Generasi Baharu FELDA</h3>
+            <p>Biasiswa, latihan kemahiran dan bimbingan kerjaya untuk anak-anak peneroka.</p>
+          </div>
+          <a href="#" class="bulat" aria-label="Lihat Generasi Baharu FELDA"><svg><use href="#i-panah"/></svg></a>
+        </div>
+      </article>
+
+      <article class="projek" tabindex="0">
+        <img class="foto" src="assets/img/berita-2.jpg" alt="" loading="lazy">
+        <span class="nom">03</span>
+        <div class="tegak"><small>Usahawan</small>Keusahawanan</div>
+        <div class="butiran">
+          <div>
+            <span class="kat">Usahawan</span>
+            <h3>Usahawan Komuniti</h3>
+            <p>Membantu peneroka dan keluarga menjana pendapatan tambahan melalui perniagaan kecil.</p>
+          </div>
+          <a href="#" class="bulat" aria-label="Lihat Usahawan Komuniti"><svg><use href="#i-panah"/></svg></a>
+        </div>
+      </article>
+
+      <article class="projek" tabindex="0">
+        <img class="foto" src="assets/img/program-komuniti.jpg" alt="" loading="lazy">
+        <span class="nom">04</span>
+        <div class="tegak"><small>Komuniti</small>Kesejahteraan</div>
+        <div class="butiran">
+          <div>
+            <span class="kat">Komuniti</span>
+            <h3>Kesejahteraan Komuniti</h3>
+            <p>Infrastruktur, kemudahan awam dan kebajikan untuk rancangan yang lebih sejahtera.</p>
+          </div>
+          <a href="#" class="bulat" aria-label="Lihat Kesejahteraan Komuniti"><svg><use href="#i-panah"/></svg></a>
+        </div>
+      </article>
+
+      <article class="projek" tabindex="0">
+        <img class="foto" src="assets/img/program-ladang-pintar.jpg" alt="" loading="lazy">
+        <span class="nom">05</span>
+        <div class="tegak"><small>Digital</small>Ladang Pintar</div>
+        <div class="butiran">
+          <div>
+            <span class="kat">Digital</span>
+            <h3>RISE: Ladang Pintar</h3>
+            <p>Platform digital bersepadu untuk pengurusan ladang dan komuniti peneroka.</p>
+          </div>
+          <a href="#" class="bulat" aria-label="Lihat RISE: Ladang Pintar"><svg><use href="#i-panah"/></svg></a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FELDA DIGITAL ================= -->
+<section class="digital" id="digital">
+  <div class="bekas">
+    <div class="tengah muncul">
+      <span class="label">FELDA Digital</span>
+      <h2 class="tajuk-seksyen">Urusan Peneroka <span>Dalam Talian</span></h2>
+    </div>
+    <div class="grid">
+      <div class="kad-digital muncul lewat-1">
+        <div class="logo-d"><img src="assets/img/logo-rise.png" alt="RISE — Digitalisasi Tunjang Keberkatan"></div>
+        <h4>RISE</h4>
+        <p>Platform digital bersepadu untuk memacu transformasi pengurusan ladang dan komuniti peneroka.</p>
+        <a href="#">Klik di sini <svg class="anak-panah"><use href="#i-panah"/></svg></a>
+      </div>
+      <div class="kad-digital muncul lewat-2">
+        <!-- Ganti dengan logo SPS rasmi bila ada -->
+        <div class="logo-d"><span class="sps">SPS<i>.</i></span></div>
+        <h4>SPS</h4>
+        <p>Sistem Pembayaran Pintar — pembayaran digital, urusan lebih mudah.</p>
+        <a href="https://smartpaymentsystem.felda.net.my/">Klik di sini <svg class="anak-panah"><use href="#i-panah"/></svg></a>
+      </div>
+      <div class="kad-digital muncul lewat-3">
+        <div class="logo-d panjang"><img src="assets/img/logo-myagreement.png" alt="myagreement.com.my"></div>
+        <h4>myagreement</h4>
+        <p>Proses perjanjian lebih telus dan teratur. Akses dokumen anda bila-bila masa, di mana sahaja.</p>
+        <a href="https://felda.myagreement.com.my/">Klik di sini <svg class="anak-panah"><use href="#i-panah"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MEDIA SOSIAL ================= -->
+<section class="sosial">
+  <div class="bekas">
+    <div class="kepala-sosial muncul">
+      <h2 class="tajuk-seksyen">Media <span>Sosial</span></h2>
+      <div class="ikon-sosial">
+        <a href="https://www.facebook.com/FeldaLKTP" aria-label="Facebook"><svg><use href="#i-fb"/></svg></a>
+        <a href="https://www.instagram.com/myfelda/" aria-label="Instagram"><svg><use href="#i-ig"/></svg></a>
+        <a href="https://twitter.com/feldalktp" aria-label="X"><svg><use href="#i-x"/></svg></a>
+        <a href="https://www.youtube.com/channel/UCrSHiiY6f37_XzaQdcEaNrw" aria-label="YouTube"><svg><use href="#i-yt"/></svg></a>
+        <a href="#" class="semua" aria-label="Semua media sosial">ALL</a>
+      </div>
+    </div>
+  </div>
+  <div class="galeri muncul">
+    <a href="https://www.instagram.com/myfelda/"><img src="assets/img/sosial-1.jpg" alt="Hantaran Instagram FELDA 1" loading="lazy"><span class="lihat"><svg><use href="#i-ig"/></svg></span></a>
+    <a href="https://www.instagram.com/myfelda/"><img src="assets/img/sosial-2.jpg" alt="Hantaran Instagram FELDA 2" loading="lazy"><span class="lihat"><svg><use href="#i-ig"/></svg></span></a>
+    <a href="https://www.instagram.com/myfelda/"><img src="assets/img/sosial-3.jpg" alt="Hantaran Instagram FELDA 3" loading="lazy"><span class="lihat"><svg><use href="#i-ig"/></svg></span></a>
+    <a href="https://www.instagram.com/myfelda/"><img src="assets/img/sosial-4.jpg" alt="Hantaran Instagram FELDA 4" loading="lazy"><span class="lihat"><svg><use href="#i-ig"/></svg></span></a>
+    <a href="https://www.instagram.com/myfelda/"><img src="assets/img/sosial-5.jpg" alt="Hantaran Instagram FELDA 5" loading="lazy"><span class="lihat"><svg><use href="#i-ig"/></svg></span></a>
+  </div>
+</section>
+
+<!-- ================= ANAK SYARIKAT ================= -->
+<section class="anak">
+  <div class="bekas">
+    <div class="tengah"><span class="label">Anak Syarikat di Bawah FELDA</span></div>
+    <div class="baris muncul">
+      <a href="https://fpmsb.com/"><img src="assets/img/logo-fpmsb.png" alt="FELDA Plantation Management Sdn. Bhd."></a>
+      <a href="https://kgfb.com.my/"><img src="assets/img/logo-kgfb.png" alt="Koperasi Generasi FELDA Baru Berhad"></a>
+      <a href="https://www.kpf.my/"><img src="assets/img/logo-kpf.png" alt="KPF"></a>
+      <a href="https://www.waqaffelda.com.my/portal"><img src="assets/img/logo-waqaf.png" alt="Waqaf FELDA"></a>
+      <a href="https://www.msmsugar.com/"><img src="assets/img/logo-msm.png" alt="MSM"></a>
+      <a href="https://www.encorp.com.my/"><img src="assets/img/logo-encorp.png" alt="ENCORP"></a>
+      <a href="https://www.yayasanfelda.org/"><img src="assets/img/logo-yayasan.png" alt="Yayasan FELDA"></a>
+      <a href="https://ficsb.com.my/"><img src="assets/img/logo-fic.png" alt="FELDA Investment Corporation"></a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTA ================= -->
+<section class="cta">
+  <div class="bekas muncul">
+    <div>
+      <h2>Ada pertanyaan tentang <span>urusan peneroka</span>? Kami sedia membantu.</h2>
+      <p class="masa">Isnin – Jumaat, 8:30 pagi – 5:30 petang · 03-2191 2191</p>
+    </div>
+    <a href="https://wa.me/60122594214" class="butang butang-merah">WhatsApp Kami <svg><use href="#i-panah"/></svg></a>
+  </div>
+</section>
+
+<!-- ================= KAKI ================= -->
+<footer id="hubungi">
+  <div class="bekas">
+    <div class="grid">
+      <div>
+        <div class="nama-org">Lembaga Kemajuan Tanah Persekutuan (FELDA)</div>
+        <p>Lembaga Kemajuan Tanah Persekutuan — 70 tahun bersama peneroka membina tanah, insan dan masa depan.</p>
+        <div class="sosial-kaki">
+          <a href="https://www.facebook.com/FeldaLKTP" aria-label="Facebook"><svg><use href="#i-fb"/></svg></a>
+          <a href="https://twitter.com/feldalktp" aria-label="X"><svg><use href="#i-x"/></svg></a>
+          <a href="https://www.instagram.com/myfelda/" aria-label="Instagram"><svg><use href="#i-ig"/></svg></a>
+          <a href="https://www.youtube.com/channel/UCrSHiiY6f37_XzaQdcEaNrw" aria-label="YouTube"><svg><use href="#i-yt"/></svg></a>
+          <a href="https://wa.me/60122594214" aria-label="WhatsApp"><svg><use href="#i-wa"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h5>Peneroka</h5>
+        <ul>
+          <li><a href="#">Perakaunan Peneroka</a></li>
+          <li><a href="#">Perkhidmatan</a></li>
+          <li><a href="#">Lokasi Rancangan</a></li>
+          <li><a href="#">Sumbangan Sosioekonomi</a></li>
+          <li><a href="#">Permohonan Online</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Pautan Pantas</h5>
+        <ul>
+          <li><a href="#">Mengenai FELDA</a></li>
+          <li><a href="#">Integriti</a></li>
+          <li><a href="#">Iklan &amp; Tender</a></li>
+          <li><a href="#">Soalan Lazim</a></li>
+          <li><a href="#">Aduan &amp; Maklum Balas</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Hubungi Kami</h5>
+        <ul class="hubung">
+          <li><svg><use href="#i-lokasi"/></svg><span>Menara FELDA, Platinum Park, No. 11, Persiaran KLCC, 50088 Kuala Lumpur</span></li>
+          <li><svg><use href="#i-telefon"/></svg><span>03-2191 2191</span></li>
+          <li><svg><use href="#i-wa"/></svg><span>WhatsApp: 012-259 4214</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="bawah">
+    <div class="bekas">
+      <span>Hak Cipta Terpelihara © 2026 FELDA</span>
+      <nav aria-label="Pautan dasar"><a href="#">Dasar Privasi</a><a href="#">Dasar Keselamatan</a><a href="#">Penafian</a><a href="#">Peta Laman</a></nav>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* Menu mudah alih */
+(function(){
+  const t=document.getElementById('togol'),m=document.getElementById('menu');
+  t.addEventListener('click',()=>{const b=m.classList.toggle('buka');t.setAttribute('aria-expanded',b)});
+  const kecil=matchMedia('(max-width:1260px)');
+  const item=[...m.querySelectorAll('.ada-sub')];
+  const tutup=kecuali=>item.forEach(i=>{if(i!==kecuali){i.classList.remove('buka');i.querySelector('.induk').setAttribute('aria-expanded',false)}});
+  const set=(i,o)=>{tutup(i);i.classList.toggle('buka',o);i.querySelector('.induk').setAttribute('aria-expanded',o)};
+  m.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{m.classList.remove('buka');t.setAttribute('aria-expanded',false);tutup()}));
+  /* Mega menu: desktop guna hover (CSS); mudah alih ketik untuk buka/tutup */
+  item.forEach(i=>{
+    i.querySelector('.induk').addEventListener('click',e=>{e.stopPropagation();if(kecil.matches)set(i,!i.classList.contains('buka'))});
+    i.querySelector('.mega-panel').addEventListener('click',e=>e.stopPropagation());
+  });
+  document.addEventListener('click',()=>tutup());
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'){const o=item.find(i=>i.classList.contains('buka'));tutup();o&&o.querySelector('.induk').focus()}});
+})();
+
+/* Bayang kepala semasa skrol */
+(function(){
+  const k=document.getElementById('kepala');
+  const f=()=>k.classList.toggle('terapung',scrollY>60);
+  addEventListener('scroll',f,{passive:true});f();
+})();
+
+/* Bahasa BM/EN — tukar bahasa panel kebolehcapaian */
+document.querySelectorAll('.bahasa a').forEach(a=>a.addEventListener('click',e=>{
+  e.preventDefault();
+  document.querySelectorAll('.bahasa a').forEach(x=>x.classList.toggle('aktif',x===a));
+  if(window.A11y)A11y.setLang(a.dataset.lang);
+}));
+
+/* Akordion program — hover (desktop) / klik & papan kekunci (mudah alih) */
+(function(){
+  const kad=[...document.querySelectorAll('#akordion .projek')];
+  const aktifkan=k=>{kad.forEach(x=>x.classList.toggle('aktif',x===k))};
+  const sentuh=matchMedia('(hover:none)').matches;
+  kad.forEach(k=>{
+    if(!sentuh)k.addEventListener('mouseenter',()=>aktifkan(k));
+    k.addEventListener('click',()=>aktifkan(k));
+    k.addEventListener('focus',()=>aktifkan(k));
+    k.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();aktifkan(k)}});
+  });
+})();
+
+/* Animasi muncul semasa skrol */
+(function(){
+  const el=document.querySelectorAll('.muncul');
+  if(!('IntersectionObserver' in window)){el.forEach(e=>e.classList.add('nampak'));return}
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('nampak');io.unobserve(e.target)}}),{threshold:.15,rootMargin:'0px 0px -40px 0px'});
+  el.forEach(e=>io.observe(e));
+})();
+</script>
+</div><!-- /#a11y-root -->
+
+<script src="assets/js/a11y.js" data-lang="ms" data-storage-key="felda70-a11y" data-reader-hide=".galeri,.anak" defer></script>
+</body>
+</html>
